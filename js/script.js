@@ -17,7 +17,7 @@ document.getElementById('tri_arrivee').onclick = function(){
 	liste_copie = liste.concat(liste2);
 	var indicePetit;
 
-	for(var j=0; j<liste_copie.length; i++){
+	while(liste_copie.length != 0){
 		var minArrivee = liste_copie[0][0];
 		var minNom = liste_copie[0][1];
 		var minBrassard = liste_copie[0][2];
@@ -30,7 +30,7 @@ document.getElementById('tri_arrivee').onclick = function(){
 			}
 		}
 		arrivee.push([minArrivee, minNom, minBrassard]);
-		liste_copie.splice(indicePetit, 1);
+		liste_copie.splice(indicePetit,1);
 	}
 
 	for(var k=0; k<arrivee.length; k++){
@@ -42,11 +42,16 @@ document.getElementById('tri_arrivee').onclick = function(){
 
 document.getElementById('tri_brassard').onclick = function(){
 
+	document.getElementById('numArrivee').innerHTML = "";
+	document.getElementById('nom').innerHTML = "";
+	document.getElementById('brassard').innerHTML = "";
+
 	var arrivee = new Array;
 	liste_copie = liste.concat(liste2);
 	var indicePetit;
 
-	for(var j=0; j<liste_copie.length; i++){
+	while(liste_copie.length != 0){
+
 		var minArrivee = liste_copie[0][0];
 		var minNom = liste_copie[0][1];
 		var minBrassard = liste_copie[0][2];
