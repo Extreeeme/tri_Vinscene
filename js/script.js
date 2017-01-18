@@ -74,4 +74,63 @@ document.getElementById('tri_brassard').onclick = function(){
 	}
 }
 
+document.getElementById('tri_nom').onclick = function(){
 
+	document.getElementById('numArrivee').innerHTML = "";
+	document.getElementById('nom').innerHTML = "";
+	document.getElementById('brassard').innerHTML = "";
+
+	var arrivee2 = new Array;
+	var liste_copie = liste.concat(liste2);
+	var indicePetit;
+	var nom_prenom;
+	var nom_prenom_test;
+	var nom;
+
+	while(liste_copie.length != 0){
+
+		var minArrivee = liste_copie[0][0];
+		var minNom = liste_copie[0][1];
+		var minBrassard = liste_copie[0][2];
+		nom_prenom = liste_copie[0][1].split(' ');
+		for(var i = 0; i<liste_copie.length; i++){
+			nom_prenom_test = liste_copie[i][1].split(' ');
+			if(nom_prenom[0] >= nom_prenom_test[0]){
+				minArrivee = liste_copie[i][0];
+				minNom = liste_copie[i][1];
+				minBrassard = liste_copie[i][2];
+				nom_prenom = nom_prenom_test;
+				indicePetit = i;
+			}
+		}
+		arrivee2.push([minArrivee, minNom, minBrassard]);
+		liste_copie.splice(indicePetit, 1);
+	}
+
+	for(var k=0; k<arrivee2.length; k++){
+		document.getElementById('numArrivee').innerHTML += "<li>"+arrivee2[k][0]+"</li>";
+		document.getElementById('nom').innerHTML += "<li>"+arrivee2[k][1]+"</li>";
+		document.getElementById('brassard').innerHTML += "<li>"+arrivee2[k][2]+"</li>";
+	}
+}
+
+document.getElementById('usr_cherche').onclick = function(){
+	document.getElementById('numArrivee').innerHTML = "";
+	document.getElementById('nom').innerHTML = "";
+	document.getElementById('brassard').innerHTML = "";
+	
+	var nom = document.getElementById("usr").value; 
+	var nom_prenom;
+	var nom_prenom_test;
+	var arrivee2 = new Array;
+	var liste_copie = liste.concat(liste2);
+	for(var i = 0; i<liste_copie.length; i++){
+		nom_prenom_test = liste_copie[i][1].split(' ');
+		if(nom_prenom_test[0] == nom){
+			document.getElementById('numArrivee').innerHTML += "<li>"+liste_copie[i][0]+"</li>";
+			document.getElementById('nom').innerHTML += "<li>"+liste_copie[i][1]+"</li>";
+			document.getElementById('brassard').innerHTML += "<li>"+liste_copie[i][2]+"</li>";
+		}
+
+	}
+}
