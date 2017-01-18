@@ -118,15 +118,54 @@ document.getElementById('usr_cherche').onclick = function(){
 	document.getElementById('numArrivee').innerHTML = "";
 	document.getElementById('nom').innerHTML = "";
 	document.getElementById('brassard').innerHTML = "";
-	
+
 	var nom = document.getElementById("usr").value; 
-	var nom_prenom;
 	var nom_prenom_test;
 	var arrivee2 = new Array;
 	var liste_copie = liste.concat(liste2);
 	for(var i = 0; i<liste_copie.length; i++){
 		nom_prenom_test = liste_copie[i][1].split(' ');
 		if(nom_prenom_test[0] == nom){
+			document.getElementById('numArrivee').innerHTML += "<li>"+liste_copie[i][0]+"</li>";
+			document.getElementById('nom').innerHTML += "<li>"+liste_copie[i][1]+"</li>";
+			document.getElementById('brassard').innerHTML += "<li>"+liste_copie[i][2]+"</li>";
+		}
+
+	}
+}
+
+document.getElementById('dossier_cherche').onclick = function(){
+	document.getElementById('numArrivee').innerHTML = "";
+	document.getElementById('nom').innerHTML = "";
+	document.getElementById('brassard').innerHTML = "";
+	
+	var dossier = document.getElementById("dossier").value; 
+	var dossier_test;
+	var arrivee2 = new Array;
+	var liste_copie = liste.concat(liste2);
+	for(var i = 0; i<liste_copie.length; i++){
+		dossier_test = liste_copie[i][2];
+		if(dossier_test== dossier){
+			document.getElementById('numArrivee').innerHTML += "<li>"+liste_copie[i][0]+"</li>";
+			document.getElementById('nom').innerHTML += "<li>"+liste_copie[i][1]+"</li>";
+			document.getElementById('brassard').innerHTML += "<li>"+liste_copie[i][2]+"</li>";
+		}
+
+	}
+}
+
+document.getElementById('arrivee_cherche').onclick = function(){
+	document.getElementById('numArrivee').innerHTML = "";
+	document.getElementById('nom').innerHTML = "";
+	document.getElementById('brassard').innerHTML = "";
+	
+	var arrivee = document.getElementById("arrivee").value; 
+	var arrivee_test;
+	var arrivee2 = new Array;
+	var liste_copie = liste.concat(liste2);
+	for(var i = 0; i<liste_copie.length; i++){
+		arrivee_test = liste_copie[i][0];
+		if(arrivee_test== arrivee){
 			document.getElementById('numArrivee').innerHTML += "<li>"+liste_copie[i][0]+"</li>";
 			document.getElementById('nom').innerHTML += "<li>"+liste_copie[i][1]+"</li>";
 			document.getElementById('brassard').innerHTML += "<li>"+liste_copie[i][2]+"</li>";
