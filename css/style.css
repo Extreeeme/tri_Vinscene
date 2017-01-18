@@ -1,0 +1,8 @@
+body{
+	background-color: #E6E6E6;
+}
+
+li {
+	list-style: none;
+	border-bottom: 1px solid grey;
+}
