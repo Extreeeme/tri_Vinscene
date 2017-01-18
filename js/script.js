@@ -9,7 +9,7 @@ document.getElementById("reset").onclick = function(){	//Fonction pour le bouton
 
 document.getElementById('tri_arrivee').onclick = function(){//Fonction qui tri par numéro d'arrivée
 
-	document.getElementById('numArrivee').innerHTML = ""; //Réinisitalise les listes
+	document.getElementById('numArrivee').innerHTML = ""; //Réinisitalise le tableau affiché
 	document.getElementById('nom').innerHTML = "";
 	document.getElementById('brassard').innerHTML = "";
 
@@ -33,54 +33,54 @@ document.getElementById('tri_arrivee').onclick = function(){//Fonction qui tri p
 		liste_copie.splice(indicePetit,1); //Retire la ligne du tableau
 	}
 
-	for(var k=0; k<arrivee.length; k++){ //Ecris le tableau sur la page HTML
-		document.getElementById('numArrivee').innerHTML += "<li>"+arrivee[k][0]+"</li>";
-		document.getElementById('nom').innerHTML += "<li>"+arrivee[k][1]+"</li>";
-		document.getElementById('brassard').innerHTML += "<li>"+arrivee[k][2]+"</li>";
+	for(var k=0; k<arrivee.length; k++){ //Ecris le tableau sur la page HTML dans chacune des 3 colonnes
+		document.getElementById('numArrivee').innerHTML += "<li>"+arrivee[k][0]+"</li>"; //1ère colonne ==> classement
+		document.getElementById('nom').innerHTML += "<li>"+arrivee[k][1]+"</li>";	 //2ème colonne ==> Nom Prénom
+		document.getElementById('brassard').innerHTML += "<li>"+arrivee[k][2]+"</li>"; //3ème colonne ==> Dossard
 	}	
 }
 
-document.getElementById('tri_brassard').onclick = function(){
+document.getElementById('tri_brassard').onclick = function(){ //Fonction qui tri par numéro de brassard
 
-	document.getElementById('numArrivee').innerHTML = "";
+	document.getElementById('numArrivee').innerHTML = ""; //Réinitialisation du tableau affiché
 	document.getElementById('nom').innerHTML = "";
 	document.getElementById('brassard').innerHTML = "";
 
-	var arrivee2 = new Array;
-	var liste_copie = liste.concat(liste2);
+	var arrivee2 = new Array;	//Création du nouveau tableau trié
+	var liste_copie = liste.concat(liste2); //Concaténation des deux listes
 	var indicePetit;
 
-	while(liste_copie.length != 0){
+	while(liste_copie.length != 0){	//Tant que la liste existe
 
-		var minArrivee = liste_copie[0][0];
+		var minArrivee = liste_copie[0][0]; //Initialisation des variables minimum
 		var minNom = liste_copie[0][1];
 		var minBrassard = liste_copie[0][2];
-		for(var i = 0; i<liste_copie.length; i++){
-			if(minBrassard >= liste_copie[i][2]){
-				minArrivee = liste_copie[i][0];
+		for(var i = 0; i<liste_copie.length; i++){ //Boucle qui parcours la liste
+			if(minBrassard >= liste_copie[i][2]){ //Si le numéro de dossard est plus grand que celui dans la liste
+				minArrivee = liste_copie[i][0]; //Alors actualisation des variables minimum
 				minNom = liste_copie[i][1];
 				minBrassard = liste_copie[i][2];
-				indicePetit = i;
+				indicePetit = i; //Indice de l'élément à enlever dans la liste
 			}
 		}
-		arrivee2.push([minArrivee, minNom, minBrassard]);
-		liste_copie.splice(indicePetit, 1);
+		arrivee2.push([minArrivee, minNom, minBrassard]); //On ajoute les variables minimum à la future liste triée
+		liste_copie.splice(indicePetit, 1); //Et on supprime l'élément de l'autre liste
 	}
 
-	for(var k=0; k<arrivee2.length; k++){
+	for(var k=0; k<arrivee2.length; k++){ //Ecris le tableau
 		document.getElementById('numArrivee').innerHTML += "<li>"+arrivee2[k][0]+"</li>";
 		document.getElementById('nom').innerHTML += "<li>"+arrivee2[k][1]+"</li>";
 		document.getElementById('brassard').innerHTML += "<li>"+arrivee2[k][2]+"</li>";
 	}
 }
 
-document.getElementById('tri_nom').onclick = function(){
+document.getElementById('tri_nom').onclick = function(){ //Fonction qui tri par Nom
 
-	document.getElementById('numArrivee').innerHTML = "";
+	document.getElementById('numArrivee').innerHTML = ""; //Réinitialisation du tableau
 	document.getElementById('nom').innerHTML = "";
 	document.getElementById('brassard').innerHTML = "";
 
-	var arrivee2 = new Array;
+	var arrivee2 = new Array; //Création du futur tableau trié
 	var liste_copie = liste.concat(liste2);
 	var indicePetit;
 	var nom_prenom;
