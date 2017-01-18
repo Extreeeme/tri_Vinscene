@@ -2,38 +2,38 @@ var liste=[[1,"MULOT Cyrille",3],[2,"AMIOT Antoine",2],[3,"BRUNET Xavier",36],[4
 var liste2 = [[70,"MOSNIER Bernard",55],[71,"BERGERET Lise",8],[72,"BERGERET Christophe",7],[73,"LEFEBVRE Michel",91],[74,"FLEURY Stephanie",15],[75,"AUBARD Nicolas",74],[76,"VALLEE Nelly",45],[77,"BERNABEU Julien",73],[78,"DUPRé Alain",78],[79,"SALIGNAT Jean-claude",4],[80,"VOLAT Marc",21],[81,"BENIGAUD Sylviane",18],[82,"LEPAIN Laurent",22]]
 
 document.getElementById("reset").onclick = function(){	//Fonction pour le bouton reset
-	document.getElementById('numArrivee').innerHTML = "";//Réinisitalise les listes
+	document.getElementById('numArrivee').innerHTML = ""; //Réinisitalise les listes
 	document.getElementById('nom').innerHTML = "";
 	document.getElementById('brassard').innerHTML = "";
 }
 
 document.getElementById('tri_arrivee').onclick = function(){//Fonction qui tri par numéro d'arrivée
 
-	document.getElementById('numArrivee').innerHTML = "";
+	document.getElementById('numArrivee').innerHTML = ""; //Réinisitalise les listes
 	document.getElementById('nom').innerHTML = "";
 	document.getElementById('brassard').innerHTML = "";
 
-	var arrivee = new Array;
-	var liste_copie = liste.concat(liste2);
+	var arrivee = new Array;		//Création du tableau qui sera trié
+	var liste_copie = liste.concat(liste2);	//Concaténation des deux listes
 	var indicePetit;
 
-	while(liste_copie.length != 0){
-		var minArrivee = liste_copie[0][0];
+	while(liste_copie.length != 0){			//Tant que la liste n'est pas vide
+		var minArrivee = liste_copie[0][0];	//Initialisaiton des variables 
 		var minNom = liste_copie[0][1];
 		var minBrassard = liste_copie[0][2];
-		for(var i = 0; i<liste_copie.length; i++){
-			if(minArrivee >= liste_copie[i][0]){
-				minArrivee = liste_copie[i][0];
+		for(var i = 0; i<liste_copie.length; i++){ //Boucle qui parcours la liste
+			if(minArrivee >= liste_copie[i][0]){ // Trouve le minimum
+				minArrivee = liste_copie[i][0]; //Si trouvé change les variables
 				minNom = liste_copie[i][1];
 				minBrassard = liste_copie[i][2];
 				indicePetit = i;
 			}
 		}
-		arrivee.push([minArrivee, minNom, minBrassard]);
-		liste_copie.splice(indicePetit,1);
+		arrivee.push([minArrivee, minNom, minBrassard]); //Push le tout dans le nouveau tableau
+		liste_copie.splice(indicePetit,1); //Retire la ligne du tableau
 	}
 
-	for(var k=0; k<arrivee.length; k++){
+	for(var k=0; k<arrivee.length; k++){ //Ecris le tableau sur la page HTML
 		document.getElementById('numArrivee').innerHTML += "<li>"+arrivee[k][0]+"</li>";
 		document.getElementById('nom').innerHTML += "<li>"+arrivee[k][1]+"</li>";
 		document.getElementById('brassard').innerHTML += "<li>"+arrivee[k][2]+"</li>";
